@@ -14,7 +14,7 @@ import {
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import Footer from "../footer/Footer";
 
-function TeacherInfo(){
+function TeacherInfo({ navigation }){
  return(
     <Box
       rounded="lg"
@@ -74,7 +74,7 @@ function TeacherInfo(){
           </HStack>
         </HStack>
       </Stack>
-      <Footer />
+      <Footer navigation={navigation} />
     </Box>
     );
 }

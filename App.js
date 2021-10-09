@@ -10,21 +10,15 @@ import TeacherInfo from "./components/teachers/TeacherInfo";
 import TeacherSearch from "./components/teachers/TeacherSearch";
 import Profile from "./components/profile/Profile";
 import History from "./components/history/History";
+import RegisterAccount from "./components/login/RegisterAccount";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
 
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+export default function App({ navigation }) {
+
   return (
     <NativeBaseProvider>
       <NavigationContainer>
@@ -36,6 +30,7 @@ export default function App() {
           <Stack.Screen name="TeacherSearch" component={TeacherSearch} />
           <Stack.Screen name="History" component={History} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="RegisterAccount" component={RegisterAccount} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

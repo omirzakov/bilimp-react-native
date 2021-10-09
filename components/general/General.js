@@ -2,12 +2,11 @@ import React from 'react'
 import { Box, Container, Heading } from 'native-base';
 import Teachers from '../teachers/Teachers';
 import Footer from '../footer/Footer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const General = ({ navigation }) => {
-    
-
 
     return (
         <Box flex={1}>

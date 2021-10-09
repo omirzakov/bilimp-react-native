@@ -55,7 +55,6 @@ export const Teachers = ({ navigation }) => {
     
   ];
 
-  console.log(navigation)
   return (
     <Box
       w={{

@@ -1,14 +1,7 @@
 import React from "react";
 import {
-    NativeBaseProvider,
     Box,
     Text,
-    Heading,
-    VStack,
-    FormControl,
-    Input,
-    Link,
-    Button,
     Icon,
     HStack,
     Center,

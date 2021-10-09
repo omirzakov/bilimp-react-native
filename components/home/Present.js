@@ -1,14 +1,27 @@
-import { Button, Center, Heading, Image, Stack } from "native-base";
-import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Button, Center, Heading, Image, Stack, Text } from "native-base";
+import Storage from 'react-native-storage';
+import React, { useEffect } from "react";
 
 const Home = ({ navigation }) => {
+
+
+  useEffect(async () => {
+
+    if(jwt) {
+
+      }
+  }, [])
+
+
+
+
   return (
     <>
       <Center flex={1} px={3}>
         <Stack direction="column">
-            <Heading textAlign="center">Study group</Heading>
-            <Heading>Добро пожаловать</Heading>
-            <Center>
+            <Heading textAlign="center" marginBottom={5}>Study community</Heading>
+            <Center marginBottom={3}>
                 <Image
                 marginTop={3}
                 source={{
