@@ -11,10 +11,10 @@ import {
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 const Footer = ({ navigation }) => {
-    const [selected, setSelected] = React.useState(1);
+    const [selected, setSelected] = React.useState(0);
 
   return (
-    <Box flex={1} bg="white" safeAreaTop>
+    <Box flex={1} bg="white" safeAreaTop style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
       <Center flex={1}></Center>
       <HStack bg="indigo.600" alignItems="center" safeAreaBottom shadow={6}>
         <Pressable

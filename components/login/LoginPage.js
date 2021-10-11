@@ -1,13 +1,16 @@
 
 import { Box, Button, Center, FormControl, Input, Stack, Text, useToast } from "native-base";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { loginInit } from '../api/user';
+import { storeToken } from "../api/token";
+import { AuthContext } from "../../App";
 
 const LoginPage = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const toast = useToast();
+    const { setIsSignedIn } = useContext(AuthContext);
+    
 
     const handleLogin = async () => {
 
@@ -18,12 +21,11 @@ const LoginPage = ({ navigation }) => {
             }
             const res = await loginInit(user);
             const jwt = res.data.jwtToken;
-            console.log(jwt)
 
             if(jwt) {
-                // await AsyncStorage.setItem("jwt", jwt);
+                const res = await storeToken(jwt);
                 toast.show({title: "Добро пожаловать"});
-                navigation.navigate("General")
+                setIsSignedIn(true);
             }
 
 

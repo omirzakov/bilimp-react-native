@@ -1,16 +1,22 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Button, Center, Heading, Image, Stack, Text } from "native-base";
-import Storage from 'react-native-storage';
 import React, { useEffect } from "react";
+
+
+import { Button, Center, Heading, Image, Stack } from "native-base";
+import { getToken } from "../api/token";
 
 const Home = ({ navigation }) => {
 
 
-  useEffect(async () => {
+  useEffect(() => {
+    const tokenResponse = async () => {
+        const token = await getToken();
 
-    if(jwt) {
+        if(token) {
+          navigation.navigate("General")
+        }
+    }
 
-      }
+    tokenResponse();
   }, [])
 
 

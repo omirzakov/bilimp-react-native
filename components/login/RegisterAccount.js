@@ -19,6 +19,8 @@ const RegisterAccount = ({ navigation }) => {
 
             const res = await registerAccount(user);
 
+            console.log(res)
+
             if(res.status) {
                 toast.show({title: "Аккаунт успешно создан"})
                 setTimeout(() => {
