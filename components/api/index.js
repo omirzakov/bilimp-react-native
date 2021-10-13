@@ -1,7 +1,7 @@
 import axios from "axios"
 import { getToken } from "./token"
 
-export const BASE_URL = "http://192.168.0.109:8080"
+export const BASE_URL = "http://172.20.23.61:8080"
 
 export const api = () => {
 

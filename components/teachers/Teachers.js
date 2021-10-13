@@ -21,13 +21,12 @@ export const Teachers = ({ navigation, teachers }) => {
         md: "50%",
       }}
     >
-      <Heading fontSize="xl" p="4" pb="3">
+      <Heading fontSize="xl" pb="3" marginTop={3}>
         Свободные преподаватели
       </Heading>
         <FlatList
           data={teachers}
           renderItem={({ item }) => {
-            console.log(item, 'iteeemm')
             return (
               <Box
               borderBottomWidth="1"
@@ -35,8 +34,6 @@ export const Teachers = ({ navigation, teachers }) => {
                 borderColor: "gray.600",
               }}
               borderColor="coolGray.200"
-              pl="4"
-              pr="5"
               py="2"
             >
               <HStack space={3} justifyContent="space-between">
