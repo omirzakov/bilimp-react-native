@@ -5,10 +5,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../App';
 import { BASE_URL } from '../api';
 import { destroyToken, getToken } from '../api/token';
+import Loader from '../loader/Loader';
 
 
 const Profile = ({ navigation }) => {
     const [profile, setProfile] = useState();
+    const [loading, setLoading] = useState(true);
     const { setIsSignedIn } = useContext(AuthContext);
 
     const handleLogout = async () => {
@@ -28,6 +30,7 @@ const Profile = ({ navigation }) => {
             });
 
             setProfile(res.data);
+            setLoading(false);
         }
 
         fetchData();
@@ -37,9 +40,14 @@ const Profile = ({ navigation }) => {
     return (
         <Box flex={1} margin={4}>
             <Heading marginBottom={4}>Профиль</Heading>
-            <Heading size="md" marginBottom={3}>{ profile?.fullName }</Heading>
-            <Heading size="sm" marginBottom={3}> { profile?.email } </Heading>
-            <Button marginTop={3} colorScheme="secondary" onPress={handleLogout}>Выйти</Button>
+            {
+                loading ? <Loader /> :
+                <>
+                    <Heading size="md" marginBottom={3}>{ profile?.fullName }</Heading>
+                    <Heading size="sm" marginBottom={3}> { profile?.email } </Heading>
+                    <Button marginTop={3} colorScheme="secondary" onPress={handleLogout}>Выйти</Button>
+                </>
+            }
         </Box>
     )
 }

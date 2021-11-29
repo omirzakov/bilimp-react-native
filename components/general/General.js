@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Heading } from 'native-base';
+import { Box, Heading, Spinner } from 'native-base';
 import Teachers from '../teachers/Teachers';
 import Footer from '../footer/Footer';
 import { api, BASE_URL } from '../api/index';
 import axios from 'axios';
+import Loader from '../loader/Loader';
 
 
 
 const General = ({ navigation }) => {
     const [teachers, setTeachers] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +19,7 @@ const General = ({ navigation }) => {
                 const data = [...res.data];
                 const newdata = [...data, ...res.data]
                 setTeachers(newdata)
+                setLoading(false)
             } catch(err) {
                 console.log(err)
             }
@@ -28,7 +31,9 @@ const General = ({ navigation }) => {
     return (
         <Box flex={1}>
             <Heading margin={4}>Главная</Heading>
-            <Teachers navigation={navigation} teachers={teachers} />
+            {
+                loading ? <Loader /> : <Teachers navigation={navigation} teachers={teachers} />
+            }
             <Footer navigation={navigation} />
         </Box>
     )
