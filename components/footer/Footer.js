@@ -71,14 +71,14 @@ const Footer = ({ navigation }) => {
               mb={1}
               as={
                 <MaterialCommunityIcons
-                  name={selected === 2 ? "cart" : "cart-outline"}
+                  name={selected === 2 ? "newspaper-variant" : "newspaper-variant"}
                 />
               }
               color="white"
               size="sm"
             />
             <Text color="white" fontSize={12}>
-              История
+              Новости
             </Text>
           </Center>
         </Pressable>

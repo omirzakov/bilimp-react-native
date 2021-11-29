@@ -29,11 +29,9 @@ const General = ({ navigation }) => {
     }, [])
 
     return (
-        <Box flex={1}>
-            <Heading margin={4}>Главная</Heading>
-            {
-                loading ? <Loader /> : <Teachers navigation={navigation} teachers={teachers} />
-            }
+        <Box flex={1} padding={3}>
+            <Heading marginBottom={3}>Главная</Heading>
+            <Teachers navigation={navigation} teachers={teachers} />
             <Footer navigation={navigation} />
         </Box>
     )

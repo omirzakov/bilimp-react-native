@@ -2,19 +2,12 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   Heading,
-  Icon,
-  AspectRatio,
-  Image,
   Text,
   Center,
-  HStack,
   Stack,
-  Avatar,
-  NativeBaseProvider,
   Button,
-  Container,
+  FlatList,
 } from "native-base";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { Linking } from 'react-native';
 import Footer from "../footer/Footer";
 import axios from "axios";
@@ -24,7 +17,7 @@ function TeacherInfo({ navigation, route }) {
   const { id } = route.params;
   const [teacher, setTeacher] = useState();
 
-  console.log(teacher, 'teacher')
+  console.log(teacher)
 
 
   useEffect(() => {
@@ -89,6 +82,27 @@ function TeacherInfo({ navigation, route }) {
         <Text fontWeight="400">
           Возможность обучать онлайн: { teacher?.onlineEnabled ? "Да" : "Нет" }
         </Text>
+        {
+          teacher?.subjects && teacher?.subjects.length > 0 &&
+          <>
+            <Heading size="md">Предметы</Heading>
+            <FlatList data={teacher?.teacherSubjects} renderItem={({item}) => <Text> { item.name }</Text>} />
+          </>
+        }
+        {
+          teacher?.experiences && teacher?.experiences.length > 0 &&
+          <>
+            <Heading size="md">Опыт работы</Heading>
+            <FlatList data={teacher.experiences} renderItem={({item}) => <Text>{item.experienceTitle}</Text>} />
+          </>
+        }
+        {
+          teacher?.educations && teacher?.educations.length > 0 &&
+          <>
+            <Heading size="md">Образование</Heading>
+            <FlatList data={teacher.educations} renderItem={({item}) => <Text key={item}>{item.universityName} {item.dateStart} - {item.dateEnd}</Text>} />
+          </>
+        }
         <Heading size="md">Контакты</Heading>
         <Text> Электронная почта: { teacher?.email } </Text>
         <Text> Номер телефона: { teacher?.phoneNumber } </Text>

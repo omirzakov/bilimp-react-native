@@ -1,5 +1,7 @@
 import { Box, Button, Center, FormControl, Input, Stack, Text, useToast } from "native-base";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../App";
+import { storeToken } from "../api/token";
 import { registerAccount } from "../api/user";
 
 const RegisterAccount = ({ navigation }) => {
@@ -7,6 +9,7 @@ const RegisterAccount = ({ navigation }) => {
     const [password, setPassword] = useState("");
     const [fullName, setFullname] = useState("");
     const toast = useToast();
+    const { setIsSignedIn } = useContext(AuthContext);
 
     const handleRegister = async () => {
 
@@ -19,13 +22,14 @@ const RegisterAccount = ({ navigation }) => {
 
             const res = await registerAccount(user);
 
-            console.log(res)
-
             if(res.status) {
-                toast.show({title: "Аккаунт успешно создан"})
-                setTimeout(() => {
-                    navigation.navigate("Login");
-                }, 2500);
+                const jwt = res.data.jwtToken;
+                const storeJWT = await storeToken(jwt);
+                setIsSignedIn(true);
+                // toast.show({title: "Аккаунт успешно создан"})
+                // setTimeout(() => {
+                //     navigation.navigate("Login");
+                // }, 2500);
             }
 
 
