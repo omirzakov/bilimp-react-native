@@ -104,6 +104,7 @@ const Footer = ({ navigation }) => {
               Профиль
             </Text>
           </Center>
+          
         </Pressable>
       </HStack>
     </Box>

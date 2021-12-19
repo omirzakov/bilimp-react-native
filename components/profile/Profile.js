@@ -6,6 +6,8 @@ import { AuthContext } from '../../App';
 import { BASE_URL } from '../api';
 import { destroyToken, getToken } from '../api/token';
 import Loader from '../loader/Loader';
+import { WebView } from 'react-native-webview';
+
 
 
 const Profile = ({ navigation }) => {

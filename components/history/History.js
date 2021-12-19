@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from "native-base";
 import React, { useEffect, useState } from "react";
+import { WebView } from "react-native-webview";
 import { getAllPosts } from "../api/posts";
 
 const History = () => {
@@ -28,19 +29,16 @@ const History = () => {
   console.log(posts)
 
   return (
-    <ScrollView>
-      <Box flex={1} margin={3}>
-        <Center>
-          {" "}
-          <Heading>Новости</Heading>
-        </Center>
-        {posts &&
+      <Box flex={1} margin={1}>
+      <WebView source={{ uri: 'https://kursiv.kz/news/obrazovanie' }} />
+        {/* {posts &&
           posts.length > 0 &&
           posts.map((item, i) => (
             <Center key={i}>
               <Box
                 w="100%"
                 maxW="80"
+                margin={2}
                 rounded="lg"
                 overflow="hidden"
                 borderColor="coolGray.200"
@@ -129,9 +127,8 @@ const History = () => {
                 </Stack>
               </Box>
             </Center>
-          ))}
+          ))} */}
       </Box>
-    </ScrollView>
   );
 };
 export default History;

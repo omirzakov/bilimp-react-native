@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Heading, Spinner } from 'native-base';
+import { Box, Button, Heading, Spinner } from 'native-base';
 import Teachers from '../teachers/Teachers';
 import Footer from '../footer/Footer';
 import { api, BASE_URL } from '../api/index';
 import axios from 'axios';
 import Loader from '../loader/Loader';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 
 
@@ -30,7 +31,7 @@ const General = ({ navigation }) => {
 
     return (
         <Box flex={1} padding={3}>
-            <Heading marginBottom={3}>Главная</Heading>
+            <Button onPress={() => navigation.navigate('Courses')} leftIcon={<FontAwesome5 name='hotjar' size={24} color='red' />} variant='subtle' colorScheme='secondary'>Курсы</Button>
             <Teachers navigation={navigation} teachers={teachers} />
             <Footer navigation={navigation} />
         </Box>

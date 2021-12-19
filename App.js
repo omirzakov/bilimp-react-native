@@ -12,6 +12,7 @@ import Profile from "./components/profile/Profile";
 import History from "./components/history/History";
 import RegisterAccount from "./components/login/RegisterAccount";
 import { getToken } from "./components/api/token";
+import Courses from "./components/courses/Courses";
 
 const Stack = createNativeStackNavigator();
 export const AuthContext = createContext(null);
@@ -32,7 +33,7 @@ export default function App() {
   }, []);
 
   return (
-    <AuthContext.Provider value={{setIsSignedIn}}>
+    <AuthContext.Provider value={{ setIsSignedIn }}>
       <NativeBaseProvider>
         <NavigationContainer>
           <Stack.Navigator>
@@ -56,12 +57,17 @@ export default function App() {
                 <Stack.Screen
                   name="History"
                   component={History}
-                  options={{ title: "История" }}
+                  options={{ title: "Новости" }}
                 />
                 <Stack.Screen
                   name="Profile"
                   component={Profile}
                   options={{ title: "Профиль" }}
+                />
+                <Stack.Screen
+                  name="Courses"
+                  component={Courses}
+                  options={{ title: "Курсы" }}
                 />
               </>
             ) : (
